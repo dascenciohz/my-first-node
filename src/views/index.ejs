@@ -1,0 +1,47 @@
+<% include partials/_header %>
+<div class="container"><h2>New Domain</h2>
+    <div class="row">
+        <!-- FORM -->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/newdomain" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="client" placeholder="Insert client name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="domainname" placeholder="Insert domain name" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"> Add </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- LIST -->
+        <div class="col-md7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Client</th>
+                        <th>Domain</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < listDomain.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= listDomain[i].client %></td>
+                            <td><%= listDomain[i].domainname %></td>
+                            <td><%= listDomain[i].status %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/_footer %>
