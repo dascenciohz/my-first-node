@@ -4,9 +4,10 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
 
-// Connection to MongoDB
-mongoose.connect('mongodb://statuspage:qwe123@localhost:27017/statuspage', {useNewUrlParser: true })
-  .then(db => console.log('Database Connected.'))
+// Connection to MongoDB (MONGODB_URI permite configurar la conexion por entorno)
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://statuspage:qwe123@localhost:27017/statuspage';
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log('Database Connected.'))
   .catch(err => console.log(err))
 
 // Settings
